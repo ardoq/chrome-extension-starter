@@ -13,11 +13,12 @@ This is a basic Chrome Extensions boilerplate to help you write modular and mode
 
 This boilerplate is updated with:
 
-- [React 16.8+](https://reactjs.org)
+- [React 16.8+ with hot reloading](https://reactjs.org)
 - [Webpack 4+](https://webpack.js.org/)
-- [React Hot Loader](https://github.com/gaearon/react-hot-loader)
-- [eslint-config-react-app](https://www.npmjs.com/package/eslint-config-react-app)
-- [Prettier](https://prettier.io/)
+- [@ardoq/shared-configs: ESLint & Prettier](todo)
+- [TypeScript](todo)
+- [Styled Components](todo)
+- [Stylelint](todo)
 
 This boilerplate is heavily inspired by and adapted from [https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate), with additional support for React 16.8+ features and Webpack 4+.
 
@@ -31,8 +32,8 @@ Please open up an issue to nudge me to keep the npm packages up-to-date. FYI, it
 2. Clone this repository.
 3. Change the package's `name`, `description`, and `repository` fields in `package.json`.
 4. Change the name of your extension on `src/manifest.json`.
-5. Run `npm install` to install the dependencies.
-6. Run `npm start`
+5. Run `yarn install` to install the dependencies.
+6. Run `yarn start`
 7. Load your extension on Chrome following:
    1. Access `chrome://extensions/`
    2. Check `Developer mode`
@@ -48,7 +49,7 @@ The boilerplate is already prepared to have a popup, an options page, a backgrou
 
 ## Webpack auto-reload and HRM
 
-To make your workflow much more efficient this boilerplate uses the [webpack server](https://webpack.github.io/docs/webpack-dev-server.html) to development (started with `npm start`) with auto reload feature that reloads the browser automatically every time that you save some file in your editor.
+To make your workflow much more efficient this boilerplate uses the [webpack server](https://webpack.github.io/docs/webpack-dev-server.html) to development (started with `yarn start`) with auto reload feature that reloads the browser automatically every time that you save some file in your editor.
 
 You can run the dev mode on other port if you want. Just specify the env var `port` like this:
 

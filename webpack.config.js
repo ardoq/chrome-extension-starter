@@ -6,12 +6,6 @@ var webpack = require('webpack'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   WriteFilePlugin = require('write-file-webpack-plugin');
-
-// load the secrets
-var alias = {
-  'react-dom': '@hot-loader/react-dom',
-};
-
 var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
 
 var fileExtensions = [
@@ -27,6 +21,8 @@ var fileExtensions = [
   'woff2',
 ];
 
+// load the secrets
+var alias = {};
 if (fileSystem.existsSync(secretsPath)) {
   alias['secrets'] = secretsPath;
 }
@@ -65,7 +61,7 @@ var options = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -75,7 +71,7 @@ var options = {
     alias: alias,
     extensions: fileExtensions
       .map((extension) => '.' + extension)
-      .concat(['.jsx', '.js', '.css']),
+      .concat(['.jsx', '.js', '.css', '.tsx', '.ts']),
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -92,7 +88,7 @@ var options = {
           from: 'src/manifest.json',
           to: path.join(__dirname, 'build'),
           force: true,
-          transform: function(content, path) {
+          transform: function (content, path) {
             // generates the manifest file using the package.json informations
             return Buffer.from(
               JSON.stringify({
